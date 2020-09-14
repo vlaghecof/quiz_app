@@ -135,7 +135,8 @@ class _AnswearWidgetState extends State<AnswearWidget> {
     return ListTile(
       onTap: () {
         setState(() {
-          if (widget.m == widget.results[widget.index].correctAnswer) {
+          if (color == Colors.black) if (widget.m ==
+              widget.results[widget.index].correctAnswer) {
             color = Colors.green;
             widget.quiz.score += 10;
             print(widget.quiz.score);
