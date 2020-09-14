@@ -1,6 +1,10 @@
 # Quiz_App
 
-A new Flutter project.
+A basic Quiz app
+
+<img src="https://github.com/vlaghecof/quiz_app/blob/master/assets/Screenshot_1600088055.png" height="500em" />;
+<img src="https://github.com/vlaghecof/quiz_app/blob/master/assets/Screenshot_1600088210.png" height="500em" />
+
 
 ## Getting Started
 
