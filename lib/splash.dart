@@ -17,17 +17,54 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Column(children: [
-        Center(
-          child: Image.asset('assets/splash.jpg'),
+      appBar: AppBar(
+        backgroundColor: Colors.deepPurpleAccent,
+        title: Center(
+          child: Text(
+            "Welcome!",
+            style: TextStyle(color: Colors.black),
+          ),
         ),
-        FlatButton(
-            child: Text("test"),
-            onPressed: () => Navigator.of(context).pushReplacement(
-                MaterialPageRoute(
-                    builder: (BuildContext context) => HomePage()))),
-      ]),
+        elevation: 0,
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/splash2.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Center(
+            child: Text(" "), //Image.asset('assets/splash.jpg'),
+          ),
+          SizedBox(
+            width: 10,
+            height: 400,
+          ),
+          RaisedButton(
+              color: Colors.indigo,
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: <Color>[
+                      Colors.indigo,
+                      Colors.deepPurple,
+                      Colors.deepPurpleAccent,
+                    ],
+                  ),
+                ),
+                padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                child: Text(
+                  "Ready?",
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+              onPressed: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => HomePage()))),
+        ]),
+      ),
     );
   }
 }

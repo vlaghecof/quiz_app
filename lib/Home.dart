@@ -11,7 +11,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  Quiz quiz;
+  Quiz quiz = null;
   List<Results> results;
 
   Function callback;
@@ -29,6 +29,11 @@ class _HomePageState extends State<HomePage> {
     print(decodedResponse);
     quiz = Quiz.fromJson(decodedResponse);
     results = quiz.results;
+  }
+
+  Future<void> ttt() {
+    change();
+    return fetchQuestions();
   }
 
   ListView QuestionList() {
@@ -87,7 +92,7 @@ class _HomePageState extends State<HomePage> {
         elevation: 0,
       ),
       body: RefreshIndicator(
-        onRefresh: fetchQuestions,
+        onRefresh: ttt,
         child: FutureBuilder(
           future: fetchQuestions(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -168,14 +173,17 @@ class Score extends StatefulWidget {
 }
 
 class _ScoreState extends State<Score> {
-  int score = 0;
+  int scores = 0;
+
+  void initState() {
+    this.scores = 1;
+  }
 
   void showScore() {
     print("function called");
     widget.refresh();
-    setState(() {
-      score = widget.quiz.score;
-    });
+    this.scores = 0;
+    setState(() {});
   }
 
   @override
@@ -194,7 +202,12 @@ class _ScoreState extends State<Score> {
           ),
         ),
         Text("Previous Score : "),
-        Text(widget.quiz.score.toString()),
+        Text((() {
+          if (scores == 1) return "0 ";
+          return widget.quiz.score.toString();
+        })()),
+
+        //Text(widget.quiz.score.toString()),
       ],
     );
   }
